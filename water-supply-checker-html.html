@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Supply Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        #date, #water-time {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+        #water-time {
+            font-weight: bold;
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Water Supply Checker</h1>
+        <div id="date"></div>
+        <div id="water-time"></div>
+    </div>
+
+    <script>
+        function checkWaterSupply() {
+            const today = new Date();
+            const startDate = new Date(2024, 6, 21); // July 21, 2024 (months are 0-indexed)
+            
+            const diffDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+            const supplyTime = diffDays % 2 === 0 ? "6:30 am" : "7:30 am";
+
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = today.toLocaleDateString('en-US', options);
+
+            document.getElementById('date').textContent = `Today is ${dateString}`;
+            document.getElementById('water-time').textContent = `💧 ${supplyTime}`;
+        }
+
+        checkWaterSupply();
+    </script>
+</body>
+</html>
