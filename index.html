@@ -36,15 +36,15 @@
 </head>
 <body>
     <div class="container">
-        <h1>Water Supply Checker</h1>
         <div id="date"></div>
-        <div id="water-time"></div>
+        <h1 id="water-time"></h1>
+        <p>Incorrect? Message Gyan to fix</p>
     </div>
 
     <script>
         function checkWaterSupply() {
             const today = new Date();
-            const startDate = new Date(2024, 6, 21); // July 21, 2024 (months are 0-indexed)
+            const startDate = new Date(2024, 6, 20); // July 20, 2024 (months are 0-indexed)
             
             const diffDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
             const supplyTime = diffDays % 2 === 0 ? "6:30 am" : "7:30 am";
